@@ -1,1 +1,58 @@
-/* AER Wallet Dashboard Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: #08131f;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 60px auto;
+}
+
+h1 {
+    color: #4bc0ff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #9fb5c7;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #101d2b;
+    border: 1px solid #1f3d59;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 25px;
+}
+
+button {
+    width: 100%;
+    background: #2f7cff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #5596ff;
+}
+
+h3 {
+    color: #4bc0ff;
+    margin-top: 20px;
+}
+
+p {
+    color: #d8e7f4;
+    word-break: break-word;
+}
