@@ -1,1 +1,54 @@
-<!-- AER Wallet Dashboard -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AER Wallet Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>AER Wallet Dashboard</h1>
+
+    <p class="subtitle">
+        Simple dashboard for the AEREDIUM Testnet
+    </p>
+
+    <button id="connectButton">
+        Connect Wallet
+    </button>
+
+    <div class="card">
+
+        <h3>Wallet</h3>
+
+        <p id="walletAddress">
+            Not Connected
+        </p>
+
+        <h3>Network</h3>
+
+        <p id="networkName">
+            —
+        </p>
+
+        <h3>Balance</h3>
+
+        <p id="walletBalance">
+            —
+        </p>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
