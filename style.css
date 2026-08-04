@@ -1,80 +1,119 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #081321;
-    color: white;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.container {
-    width: 700px;
-    max-width: 90%;
-    margin: 60px auto;
-    text-align: center;
+body{
+
+    background:#081321;
+
+    color:white;
+
+    font-family:Arial,Helvetica,sans-serif;
+
 }
 
-h1 {
-    color: #48b4ff;
-    margin-bottom: 10px;
+.container{
+
+    max-width:800px;
+
+    margin:60px auto;
+
+    padding:20px;
+
 }
 
-.subtitle {
-    color: #b5c8dd;
-    margin-bottom: 35px;
+h1{
+
+    text-align:center;
+
+    color:#45b6ff;
+
+    margin-bottom:15px;
+
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(90deg,#3b82f6,#60a5fa);
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: .25s;
+.subtitle{
+
+    text-align:center;
+
+    color:#a8c6e6;
+
+    margin-bottom:35px;
+
 }
 
-button:hover {
-    transform: translateY(-2px);
-    opacity: .95;
+.card{
+
+    background:#132236;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    border:1px solid #21476d;
+
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+
 }
 
-.card {
-    background: #122033;
-    border: 1px solid #23415e;
-    border-radius: 18px;
-    padding: 30px;
-    text-align: left;
-    box-shadow: 0 0 30px rgba(0,0,0,.25);
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    font-size:17px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    margin-bottom:25px;
+
+    background:#3b82f6;
+
+    color:white;
+
+    transition:.3s;
+
 }
 
-.card h2 {
-    color: #4db8ff;
-    margin-top: 20px;
-    margin-bottom: 8px;
+button:hover{
+
+    background:#2563eb;
+
 }
 
-.card p {
-    margin-top: 0;
-    margin-bottom: 18px;
-    word-break: break-all;
-    color: #ffffff;
+h3{
+
+    color:#58beff;
+
+    margin-top:18px;
+
+    margin-bottom:8px;
+
 }
 
-#status {
-    font-weight: bold;
-    color: #6ef58c;
+p{
+
+    color:#ffffff;
+
+    margin-bottom:18px;
+
+    word-break:break-all;
+
 }
 
-#switchNetwork {
-    margin-top: 25px;
-    background: #1f2937;
-    border: 1px solid #3b82f6;
+#status{
+
+    color:#ff5d5d;
+
+    font-weight:bold;
+
 }
-
-#switchNetwork:hover {
-    background: #2b3d52;
-}
-
-
+   
+  
