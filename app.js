@@ -1,91 +1,78 @@
 const connectButton = document.getElementById("connectButton");
-const status = document.getElementById("status");
-const wallet = document.getElementById("wallet");
-const network = document.getElementById("network");
-const balance = document.getElementById("balance");
-const switchButton = document.getElementById("switchNetwork");
 
-connectButton.onclick = connectWallet;
-switchButton.onclick = switchNetwork;
+const status = document.getElementById("status");
+const walletAddress = document.getElementById("walletAddress");
+const networkName = document.getElementById("networkName");
+const walletBalance = document.getElementById("walletBalance");
+
+connectButton.addEventListener("click", connectWallet);
+
+let provider;
 
 async function connectWallet() {
-    if (!window.ethereum) {
-        alert("Please install Rabby or MetaMask");
+
+    if (typeof window.ethereum === "undefined") {
+        alert("Please install Rabby Wallet or MetaMask.");
         return;
     }
 
     try {
-        await ethereum.request({ method: "eth_requestAccounts" });
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+
+        await provider.send("eth_requestAccounts", []);
+
         const signer = provider.getSigner();
 
         const address = await signer.getAddress();
 
-        const net = await provider.getNetwork();
+        const network = await provider.getNetwork();
 
-        const bal = await provider.getBalance(address);
+        const balance = await provider.getBalance(address);
 
-        status.innerHTML = "Connected";
-        status.style.color = "#4CAF50";
+        status.textContent = "Connected";
+        status.style.color = "#4ade80";
 
-        wallet.innerHTML = address;
+        walletAddress.textContent = address;
 
-        network.innerHTML = net.name + " (" + net.chainId + ")";
+        networkName.textContent =
+            `${network.name} (Chain ID: ${network.chainId})`;
 
-        balance.innerHTML = ethers.utils.formatEther(bal) + " ETH";
+        walletBalance.textContent =
+            `${parseFloat(
+                ethers.utils.formatEther(balance)
+            ).toFixed(5)} ETH`;
 
     } catch (err) {
-        console.log(err);
-        alert("Connection failed");
-    }
-}
 
-async function switchNetwork() {
+        console.error(err);
 
-    try {
+        status.textContent = "Connection failed";
+        status.style.color = "#ff5d5d";
 
-        await ethereum.request({
-            method: "wallet_switchEthereumChain",
-            params: [{ chainId: "0x4d5" }]
-        });
-
-    } catch (switchError) {
-
-        if (switchError.code === 4902) {
-
-            try {
-
-                await ethereum.request({
-                    method: "wallet_addEthereumChain",
-                    params: [{
-                        chainId: "0x4d5",
-                        chainName: "AEREDIUM Testnet",
-                        rpcUrls: ["https://testnet.rpc.aeredium.io"],
-                        nativeCurrency: {
-                            name: "AERX",
-                            symbol: "AERX",
-                            decimals: 18
-                        },
-                        blockExplorerUrls: [
-                            "https://testnet.explorer.aeredium.io"
-                        ]
-                    }]
-                });
-
-            } catch (addError) {
-                console.log(addError);
-            }
-
-        } else {
-
-            console.log(switchError);
-
-        }
+        alert("Wallet connection failed.");
 
     }
 
 }
+
+if (window.ethereum) {
+
+    window.ethereum.on("accountsChanged", () => {
+        connectWallet();
+    });
+
+    window.ethereum.on("chainChanged", () => {
+        location.reload();
+    });
+
+}
+       
+
+
+
+ 
+   
 
   
       
