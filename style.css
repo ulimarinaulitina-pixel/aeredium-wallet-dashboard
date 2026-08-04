@@ -115,5 +115,15 @@ p{
     font-weight:bold;
 
 }
-   
+#switchButton{
+
+    background:#14b8a6;
+
+}
+
+#switchButton:hover{
+
+    background:#0f766e;
+
+}   
   
