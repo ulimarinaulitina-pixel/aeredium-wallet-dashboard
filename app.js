@@ -1,5 +1,7 @@
 const connectButton = document.getElementById("connectButton");
+const switchButton = document.getElementById("switchButton");
 
+switchButton.addEventListener("click", switchNetwork);
 const status = document.getElementById("status");
 const walletAddress = document.getElementById("walletAddress");
 const networkName = document.getElementById("networkName");
@@ -67,7 +69,94 @@ if (window.ethereum) {
     });
 
 }
-       
+    async function switchNetwork() {
+
+    if (!window.ethereum) {
+        alert("Please install Rabby Wallet.");
+        return;
+    }
+
+    const chainId = "0x4d5"; // 1237
+
+    try {
+
+        await window.ethereum.request({
+
+            method: "wallet_switchEthereumChain",
+
+            params: [{ chainId }]
+
+        });
+
+        connectWallet();
+
+    }
+
+    catch (error) {
+
+        if (error.code === 4902) {
+
+            try {
+
+                await window.ethereum.request({
+
+                    method: "wallet_addEthereumChain",
+
+                    params: [{
+
+                        chainId: "0x4d5",
+
+                        chainName: "AEREDIUM Testnet",
+
+                        nativeCurrency: {
+
+                            name: "AERX",
+
+                            symbol: "AERX",
+
+                            decimals: 18
+
+                        },
+
+                        rpcUrls: [
+
+                            "https://testnet.rpc.aeredium.io"
+
+                        ],
+
+                        blockExplorerUrls: [
+
+                            "https://testnet.explorer.aeredium.io"
+
+                        ]
+
+                    }]
+
+                });
+
+                connectWallet();
+
+            }
+
+            catch (err) {
+
+                console.error(err);
+
+                alert("Failed to add AEREDIUM Testnet.");
+
+            }
+
+        }
+
+        else {
+
+            console.error(error);
+
+        }
+
+    }
+
+}   
 
 
 
